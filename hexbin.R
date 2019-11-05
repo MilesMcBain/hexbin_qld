@@ -55,7 +55,10 @@ road_crashes_hexbinned <-
   mutate(outline = h3jsr::h3_to_polygon(h3_index)) %>%
   st_sf(crs = 4326) ## lon lat Coordinate Reference System
 
-## make a mapdeck plot of crash density
+## Make a mapdeck plot of crash density
+## You need a (free) Mapbox token before this will work see:
+## https://github.com/SymbolixAU/mapdeck#getting-started
+
 road_crashes_hexbinned %>%
   mutate(log_crashes = log(n_crashes)) %>% ## makes hex colours a bit more interesting
   mapdeck(
